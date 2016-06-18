@@ -35,30 +35,30 @@ const store = configureStore(initialState, browserHistory);
 // must be provided for resolving how to retrieve the "route" in the state
 import { selectLocationState } from 'containers/App/selectors';
 const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: selectLocationState(),
+    selectLocationState: selectLocationState(),
 });
 
 // Set up the router, wrapping all Routes in the App component
 import App from 'containers/App';
 import createRoutes from './routes';
 const rootRoute = {
-  component: App,
-  childRoutes: createRoutes(store),
+    component: App,
+    childRoutes: createRoutes(store),
 };
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router
-      history={history}
-      routes={rootRoute}
-      render={
+    <Provider store={store}>
+        <Router
+            history={history}
+            routes={rootRoute}
+            render={
         // Scroll to top when going to a new page, imitating default browser
         // behaviour
         applyRouterMiddleware(useScroll())
       }
-    />
-  </Provider>,
-  document.getElementById('app')
+        />
+    </Provider>,
+    document.getElementById('app')
 );
 
 // Install ServiceWorker and AppCache in the end since

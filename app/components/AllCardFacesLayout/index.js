@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import styles from './styles.less';
 import LayoutBase from 'components/LayoutBase'
 import Card from 'components/Card';
+import _ from 'underscore';
 
 export default class AllCardFacesLayout extends LayoutBase {
     componentWillMount() {
@@ -20,9 +21,9 @@ export default class AllCardFacesLayout extends LayoutBase {
             <div className={classNames(styles.allCardFacesLayout)}>
                 {superContent}
                 {cards.map((item, index) => {
-                    var newCard = 
+                    var newCard = _.extend({}, item, { inverted: false });
                     return (
-                        <Card key={'P' + index} card={item} position={index} showDetails={this.showDetails.bind(this)} flipped={false}/>
+                        <Card key={'P' + index} card={newCard} position={index} showDetails={this.showDetails.bind(this)} flipped={false}/>
                     );
                 })}
             </div>

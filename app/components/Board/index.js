@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import styles from './styles.less';
 import CelticCrossLayout from 'components/CelticCrossLayout';
 import ThreeCardLayout from 'components/ThreeCardLayout';
+import AllCardFacesLayout from 'components/AllCardFacesLayout';
 import Menu from 'components/Menu';
 
 export default class Board extends React.Component {
@@ -18,6 +19,8 @@ export default class Board extends React.Component {
         let layoutComponent = null;
         if (this.state.layout === 'ThreeCardLayout'){
             layoutComponent = <ThreeCardLayout shuffle={this.state.shuffle} />
+        }else if (this.state.layout === 'AllCardFacesLayout') {
+            layoutComponent = <AllCardFacesLayout shuffle={this.state.shuffle} />
         }else{
             layoutComponent = <CelticCrossLayout shuffle={this.state.shuffle} />
         }

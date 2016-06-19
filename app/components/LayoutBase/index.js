@@ -12,14 +12,18 @@ export default class LayoutBase extends React.Component {
         super();
         this.state = {
             card: null,
-            position: -1,
+            position: null,
             showingDetails: false,
             cards: null
         };
     }
 
     showDetails(position, card){
-        this.setState({ position: position, card: card, showingDetails: true });
+        this.setState({ position: this.getPositionData(position), card: card, showingDetails: true });
+    }
+
+    getPositionData(num){
+        return { index: num, desc: 'No position data available.' };
     }
 
     draw(num){
@@ -29,10 +33,12 @@ export default class LayoutBase extends React.Component {
     componentWillReceiveProps(nextProps){
         if (nextProps.shuffle !== this.props.shuffle){
             this.draw(this.state.cards.length);
+            this.setState({ card: null, position: -1, showingDetails: false });
         }
     }
 
     render(){
+
         return(
             <CardDetails position={this.state.position} card={this.state.card} open={this.state.showingDetails} />
         );

@@ -1,17 +1,20 @@
 @import "../../variables";
 
 .menu {
+    @menuWidth: 320px;
+    @menuPadding: 15px;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 40px;
+    right: 0;
+    top: -40px;
+    width: @menuWidth;
+    height: 100vh;
+    max-width: 0;
     z-index: 1000;
-    transition: .5s;
+    transition: all .5s;
     > i {
         position: absolute;
-        right: -10px;
-        top: -40px;
+        right: 10px;
+        top: 10px;
         @size: 30px;
         display: block;
         text-align: center;
@@ -19,42 +22,39 @@
         height: @size;
         font-size: @size;
         line-height: @size;
-        color: @purple;
+        color: @gold;
         cursor: pointer;
+        transition: all .5s;
+        z-index: 1;
     }
     > div{
-        position: absolute;
         opacity: 0;
-        max-height: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, .85);
-        left: 0;
-        top: 0;
-        transition: .5s;
-        overflow: hidden;
-        > div{
-            width: 320px;
-            padding: 20px;
-            box-sizing: border-box;
-            border-radius: 3px;
-            margin: 50px auto;
-            background: rgba(40, 40, 40, 1);
-        }
+        padding: @menuPadding * 3 @menuPadding @menuPadding @menuPadding;
+        box-sizing: border-box;
+        background: rgba(40, 40, 40, 1);
+        transition: all .5s;
     }
     &.menu-open{
-        height: 100%;
+        max-width: @menuWidth;
         > div {
             opacity: 1;
-            max-height: 100%;
         }
     }
 
     .form-element{
-        font-size: 14px;
-        margin-bottom: 20px;
+        width: @menuWidth - (2*@menuPadding);
+        font-size: 13px;
+        margin-bottom: @menuPadding;
+        background: @darkgray;
+        padding: @menuPadding;
+        box-sizing: border-box;
         > label{
-            margin-right: 10px;
+            display: block;
+            margin-bottom: 5px;
+            color: @gold;
+            font-weight: bold;
         }
         input, button, select{
             background: rgba(30, 30, 30, 1);
@@ -62,6 +62,8 @@
             border-radius: 5px;
             color: rgba(255, 255, 255, .75);
             cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
             &:focus,&:active{
                 outline: none;
             }
@@ -71,6 +73,15 @@
             &:active{
                 color: rgba(255, 255, 255, 1);
                 background: rgba(15, 15, 15, 1);
+            }
+        }
+        button{
+            i{
+                color: @gold;
+                font-size: 16px;
+                position: relative;
+                top: 2px;
+                margin-right: 5px;
             }
         }
     }

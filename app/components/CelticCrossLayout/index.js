@@ -9,6 +9,10 @@ export default class CelticCrossLayout extends LayoutBase {
         super.draw(10);
     }
 
+    getPositionData(num){
+        return { index: num, desc: 'No position data available.' };
+    }
+
     render() {
         let cards = this.state.cards;
         let superContent = super.render();

@@ -9,6 +9,14 @@ export default class ThreeCardLayout extends LayoutBase {
         super.draw(3);
     }
 
+    getPositionData(num){
+        switch(num){
+            case 1: return { index: num, desc: 'Mind, Past, Background. ' };
+            case 2: return { index: num, desc: 'Body, Present, Problem.' };
+            case 3: return { index: num, desc: 'Spirit, Future, Advice' };
+        }
+    }
+
     render() {
         let cards = this.state.cards;
         let superContent = super.render();

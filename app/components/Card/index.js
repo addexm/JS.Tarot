@@ -6,7 +6,8 @@ export default class Card extends React.Component {
     static propTypes = {
         card: React.PropTypes.object,
         position: React.PropTypes.number,
-        showDetails: React.PropTypes.func.isRequired
+        showDetails: React.PropTypes.func,
+        flipped: React.PropTypes.bool
     };
 
     constructor () {
@@ -16,9 +17,18 @@ export default class Card extends React.Component {
         };
     }
 
+    componentWillMount(){
+        if (typeof this.props.flipped !== 'undefined'){
+            this.setState({flipped: this.props.flipped});
+        }
+    }
+
     componentWillReceiveProps(nextProps){
         if (this.props.card.index !== nextProps.card.index) {
             this.setState({flipped: true});
+        }
+        if (typeof this.props.flipped !== 'undefined'){
+            this.setState({flipped: this.props.flipped});
         }
     }
 
@@ -28,13 +38,16 @@ export default class Card extends React.Component {
                 'card-' + this.props.card.index,
                 {'card-inverted': this.props.card.inverted },
                 {'card-flipped': this.state.flipped },
+                'card-pos' + this.props.position,
                 this.props.extraclasses)}
             style={this.props.style}
             onClick={() => {
                 if (this.state.flipped){
                     this.setState({flipped: false});
                 }else{
-                    this.props.showDetails(this.props.position, this.props.card);
+                    if (this.props.showDetails){
+                        this.props.showDetails(this.props.position, this.props.card);
+                    }
                 }
             }}>
                 <div className="card-back">

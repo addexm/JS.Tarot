@@ -7,6 +7,7 @@
     box-sizing: border-box;
     transition: 0.4s;
     transform-style: preserve-3d;
+    cursor: pointer;
 
     .card-front{
         backface-visibility: hidden;
@@ -29,8 +30,8 @@
                 transform: rotate(180deg);
             }
         }
-        > span{
-            display: block;
+        span{
+            display: none;
             background: rgba(0, 0, 0, .35);
             text-align: center;
             position: absolute;
@@ -85,10 +86,9 @@
         }
     }
 
-    &:hover{
-        z-index: 100;
-        cursor: pointer;
-        > span{
+    &:hover:not(.card-flipped){
+        z-index: 100 !important;
+        span{
             display: block;
         }
     }
@@ -100,6 +100,10 @@
             .card-front > div {
                 background-image: url('img/@{i}.gif');
             }
+
+        }
+        &.card-pos@{i}{
+            z-index: @i;
             &.card-flipped{
                 z-index: 77 - @i;
             }

@@ -15,6 +15,12 @@ export default class Menu extends React.Component {
         };
     }
 
+    delayClose(){
+        window.setTimeout(() => {
+            this.setState({open: !this.state.open});
+        }, 300);
+    }
+
     render() {
         return (
             <div className={classNames(styles.menu, {'menu-open': this.state.open})}>
@@ -22,27 +28,24 @@ export default class Menu extends React.Component {
                     this.setState({open: !this.state.open});
                 }}/>
                 <div>
-                    <div>
-                        <div className="form-element">
-                            <button onClick={() => {
-                                this.props.shuffle();
-                                window.setTimeout(() => {
-                                    this.setState({open: !this.state.open});
-                                }, 400);
-                            }}>Shuffle</button>
-                        </div>
-                        <div className="form-element">
-                            <label for="Layout">Layout:</label>
-                            <select id="Layout" onChange={(event) => {
-                                this.props.setLayout(event.target.value);
-                                window.setTimeout(() => {
-                                    this.setState({open: !this.state.open});
-                                }, 400);
-                            }}>
-                                <option value="CelticCrossLayout">Celtic Cross</option>
-                                <option value="ThreeCardLayout">Three Card</option>
-                            </select>
-                        </div>
+                    <div className="form-element">
+                        <button onClick={() => {
+                            this.props.shuffle();
+                            this.delayClose();
+                        }}>
+                            <i className="ion-shuffle"/>Shuffle
+                        </button>
+                    </div>
+                    <div className="form-element">
+                        <label for="Layout">Layout</label>
+                        <select id="Layout" onChange={(event) => {
+                            this.props.setLayout(event.target.value);
+                            this.delayClose();
+                        }}>
+                            <option value="CelticCrossLayout">Celtic Cross</option>
+                            <option value="ThreeCardLayout">Three Card</option>
+                            <option value="AllCardFacesLayout">All Card Faces</option>
+                        </select>
                     </div>
                 </div>
             </div>

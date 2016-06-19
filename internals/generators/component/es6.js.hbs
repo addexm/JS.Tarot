@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './styles.less';
 {{/if}}
 
-class {{ properCase name }} extends React.Component {
+export default class {{ properCase name }} extends React.Component {
   render() {
     return (
       {{#if wantCSS}}
@@ -16,5 +16,3 @@ class {{ properCase name }} extends React.Component {
     );
   }
 }
-
-export default {{ properCase name }};

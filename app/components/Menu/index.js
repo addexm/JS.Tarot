@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './styles.less';
 
-class Menu extends React.Component {
+export default class Menu extends React.Component {
     static propTypes = {
         setLayout: React.PropTypes.func.isRequired,
         shuffle: React.PropTypes.func.isRequired
@@ -26,14 +26,18 @@ class Menu extends React.Component {
                         <div className="form-element">
                             <button onClick={() => {
                                 this.props.shuffle();
-                                this.setState({open: !this.state.open});
+                                window.setTimeout(() => {
+                                    this.setState({open: !this.state.open});
+                                }, 400);
                             }}>Shuffle</button>
                         </div>
                         <div className="form-element">
                             <label for="Layout">Layout:</label>
                             <select id="Layout" onChange={(event) => {
                                 this.props.setLayout(event.target.value);
-                                this.setState({open: !this.state.open});
+                                window.setTimeout(() => {
+                                    this.setState({open: !this.state.open});
+                                }, 400);
                             }}>
                                 <option value="CelticCrossLayout">Celtic Cross</option>
                                 <option value="ThreeCardLayout">Three Card</option>
@@ -45,5 +49,3 @@ class Menu extends React.Component {
         );
     }
 }
-
-export default Menu;

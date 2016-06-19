@@ -1,0 +1,109 @@
+@import "../../variables";
+
+.card {
+    width: 142px;
+    height: 250px;
+    position: absolute;
+    box-sizing: border-box;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    .card-front{
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        transform: rotateY(0deg);
+        > div{
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            .card-inverted&{
+                transform: rotate(180deg);
+            }
+        }
+        > span{
+            display: block;
+            background: rgba(0, 0, 0, .35);
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            bottom: 10%;
+            font-size: 12px;
+        }
+    }
+
+    .card-back{
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        transform: rotateY(180deg);
+        background-image: url('img/back.gif');
+        > h1{
+            display: block;
+            color: fade(@gold, 80%);
+            text-shadow: -1px -1px 6px rgba(0, 0, 0, .85);
+            font-size: 40px;
+            line-height: 40px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: auto;
+            height: 40px;
+            text-align: center;
+            margin: auto auto;
+        }
+        .card-inverted&{
+            > h1{
+                transform: rotateY(0deg);
+            }
+        }
+    }
+
+    &.card-flipped{
+        transform: rotateY(180deg);
+        .card-front{
+            transform: rotateY(0deg);
+        }
+        .card-back{
+            transform: rotateY(180deg);
+        }
+    }
+
+    &:hover{
+        z-index: 100;
+        cursor: pointer;
+        > span{
+            display: block;
+        }
+    }
+
+    .generate-cards();
+
+    .generate-cards(@i:0) when (@i =< 77) {
+        &.card-@{i}{
+            .card-front > div {
+                background-image: url('img/@{i}.gif');
+            }
+            &.card-flipped{
+                z-index: 77 - @i;
+            }
+        }
+        .generate-cards(@i + 1);
+    }
+}

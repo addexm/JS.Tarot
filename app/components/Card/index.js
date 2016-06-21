@@ -6,7 +6,7 @@ export default class Card extends React.Component {
     static propTypes = {
         card: React.PropTypes.object,
         position: React.PropTypes.number,
-        showDetails: React.PropTypes.func,
+        onClick: React.PropTypes.func,
         flipped: React.PropTypes.bool
     };
 
@@ -45,8 +45,8 @@ export default class Card extends React.Component {
                 if (this.state.flipped){
                     this.setState({flipped: false});
                 }else{
-                    if (this.props.showDetails){
-                        this.props.showDetails(this.props.position, this.props.card);
+                    if (this.props.onClick){
+                        this.props.onClick(this.props.position, this.props.card, this);
                     }
                 }
             }}>

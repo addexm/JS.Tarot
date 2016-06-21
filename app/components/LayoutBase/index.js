@@ -33,7 +33,7 @@ export default class LayoutBase extends React.Component {
     componentWillReceiveProps(nextProps){
         if (nextProps.shuffle !== this.props.shuffle){
             this.draw(this.state.cards.length);
-            this.setState({ card: null, position: -1, showingDetails: false });
+            this.setState({ card: null, position: null, showingDetails: false });
         }
     }
 

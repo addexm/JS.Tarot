@@ -20,10 +20,10 @@ export default class AllCardFacesLayout extends LayoutBase {
         return (
             <div className={classNames(styles.allCardFacesLayout)}>
                 {superContent}
-                {cards.map((item, index) => {
+                {_.sortBy(cards, (item) => { return item.index; } ).map((item, index) => {
                     var newCard = _.extend({}, item, { inverted: false });
                     return (
-                        <Card key={'P' + index} card={newCard} position={index} showDetails={this.showDetails.bind(this)} flipped={false}/>
+                        <Card key={'P' + index} card={newCard} position={index} onClick={this.showDetails.bind(this)} flipped={false}/>
                     );
                 })}
             </div>

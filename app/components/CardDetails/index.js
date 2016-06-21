@@ -28,14 +28,14 @@ export default class CardDetails extends React.Component {
     }
 
     blowUp(position, card){
-        console.log(card);
+        console.log(card, console.log(this.refs.card));
     }
 
     render() {
         if (!this.props.card)return null;
         return (
             <div className={classNames('cardDetails', {'cardDetails-open': this.state.open })}>
-                <Card card={this.props.card} position={this.props.positions} flipped={false} showDetails={this.blowUp.bind(this)}/>
+                <Card ref="card" card={this.props.card} position={this.props.positions} flipped={false} onClick={this.blowUp.bind(this)}/>
                 <div className="cardDetails-content cardDetails-notes">
                     <b>{this.props.card.name}{this.props.card.inverted?' (Reversed)':''}</b>
                     {this.props.card.notes.map((item, index)=>{

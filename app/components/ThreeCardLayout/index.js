@@ -24,13 +24,13 @@ export default class ThreeCardLayout extends LayoutBase {
             <div className={classNames(styles.threeCardLayout)}>
                 {superContent}
                 <div className="col">
-                    <Card key="p1" card={cards[0]} position={1} extraclasses="center-vertical" showDetails={this.showDetails.bind(this)}/>
+                    <Card key="p1" card={cards[0]} position={1} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>
                 </div>
                 <div className="col">
-                    <Card key="p2" card={cards[1]} position={2} extraclasses="center-vertical" showDetails={this.showDetails.bind(this)}/>
+                    <Card key="p2" card={cards[1]} position={2} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>
                 </div>
                 <div className="col">
-                    <Card key="p3" card={cards[2]} position={3} extraclasses="center-vertical" showDetails={this.showDetails.bind(this)}/>
+                    <Card key="p3" card={cards[2]} position={3} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>
                 </div>
             </div>
         );

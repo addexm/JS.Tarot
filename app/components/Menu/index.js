@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './styles.less';
+import { Link, IndexLink, withRouter } from 'react-router'
 
 export default class Menu extends React.Component {
     static propTypes = {
-        setLayout: React.PropTypes.func.isRequired,
-        shuffle: React.PropTypes.func.isRequired
+        children: React.PropTypes.node
     };
 
     constructor() {
@@ -15,10 +15,10 @@ export default class Menu extends React.Component {
         };
     }
 
-    delayClose(){
+    close(){
         window.setTimeout(() => {
             this.setState({open: !this.state.open});
-        }, 300);
+        }, 0);
     }
 
     render() {
@@ -28,24 +28,12 @@ export default class Menu extends React.Component {
                     this.setState({open: !this.state.open});
                 }}/>
                 <div>
-                    <div className="form-element">
-                        <button onClick={() => {
-                            this.props.shuffle();
-                            this.delayClose();
-                        }}>
-                            <i className="ion-shuffle"/>Shuffle
-                        </button>
+                    <div className="menu-links">
+                        <Link activeClassName="active" to=''>Readings</Link>
+                        <Link activeClassName="active" to='/test'>Test Your Knowledge</Link>
                     </div>
-                    <div className="form-element">
-                        <label for="Layout">Layout</label>
-                        <select id="Layout" onChange={(event) => {
-                            this.props.setLayout(event.target.value);
-                            this.delayClose();
-                        }}>
-                            <option value="CelticCrossLayout">Celtic Cross</option>
-                            <option value="ThreeCardLayout">Three Card</option>
-                            <option value="AllCardFacesLayout">All Card Faces</option>
-                        </select>
+                    <div className="menu-functions">
+                        {this.props.children}
                     </div>
                 </div>
             </div>

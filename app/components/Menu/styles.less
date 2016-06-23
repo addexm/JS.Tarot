@@ -5,11 +5,11 @@
     @menuPadding: 15px;
     position: absolute;
     right: 0;
-    top: -40px;
+    top: 0px;
     width: @menuWidth;
     height: 100vh;
     max-width: 0;
-    z-index: 1000;
+    z-index: 100;
     transition: all .5s;
     > i {
         position: absolute;
@@ -43,45 +43,66 @@
         }
     }
 
-    .form-element{
-        width: @menuWidth - (2*@menuPadding);
-        font-size: 13px;
-        margin-bottom: @menuPadding;
-        background: @darkgray;
-        padding: @menuPadding;
-        box-sizing: border-box;
-        > label{
+    .menu-links{
+        border-bottom: 1px solid @darkgray;
+        a{
             display: block;
-            margin-bottom: 5px;
-            color: @gold;
-            font-weight: bold;
-        }
-        input, button, select{
-            background: rgba(30, 30, 30, 1);
-            padding: 5px 10px;
-            border-radius: 5px;
-            color: rgba(255, 255, 255, .75);
-            cursor: pointer;
-            width: 100%;
-            box-sizing: border-box;
-            &:focus,&:active{
-                outline: none;
+            color:  darken(@gold, 20%);
+            margin-bottom: @menuPadding;
+            &:visited, &:active{
+                color: darken(@gold, 20%);
+            }
+            &.active{
+                color: @gold;
             }
             &:hover{
-                background: rgba(0, 0, 0, 1);
-            }
-            &:active{
-                color: rgba(255, 255, 255, 1);
-                background: rgba(15, 15, 15, 1);
+                color: @gold;
             }
         }
-        button{
-            i{
+    }
+
+    .menu-functions {
+        margin-top: @menuPadding;
+        .form-element {
+            width: @menuWidth - (2*@menuPadding);
+            font-size: 13px;
+            margin-bottom: @menuPadding;
+            background: @darkgray;
+            padding: @menuPadding;
+            box-sizing: border-box;
+            > label {
+                display: block;
+                margin-bottom: 5px;
                 color: @gold;
-                font-size: 16px;
-                position: relative;
-                top: 2px;
-                margin-right: 5px;
+                font-weight: bold;
+            }
+            input, button, select {
+                background: rgba(30, 30, 30, 1);
+                padding: 5px 10px;
+                border-radius: 5px;
+                color: rgba(255, 255, 255, .75);
+                cursor: pointer;
+                width: 100%;
+                box-sizing: border-box;
+                &:focus, &:active {
+                    outline: none;
+                }
+                &:hover {
+                    background: rgba(0, 0, 0, 1);
+                }
+                &:active {
+                    color: rgba(255, 255, 255, 1);
+                    background: rgba(15, 15, 15, 1);
+                }
+            }
+            button {
+                i {
+                    color: @gold;
+                    font-size: 16px;
+                    position: relative;
+                    top: 2px;
+                    margin-right: 5px;
+                }
             }
         }
     }

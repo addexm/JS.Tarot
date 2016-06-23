@@ -38,7 +38,6 @@ export default class LayoutBase extends React.Component {
     }
 
     render(){
-
         return(
             <CardDetails position={this.state.position} card={this.state.card} open={this.state.showingDetails} />
         );

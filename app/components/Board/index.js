@@ -27,11 +27,27 @@ export default class Board extends React.Component {
         return (
             <div className={styles.board}>
                 {layoutComponent}
-                <Menu setLayout={(layout) => {
-                    this.setState({layout: layout});
-                }} shuffle={() => {
-                    this.setState({shuffle: Date.now()});
-                }}/>
+                <Menu ref="menu">
+                    <div className="form-element">
+                        <button onClick={() => {
+                            this.setState({shuffle: Date.now()});
+                            this.refs.menu.close();
+                        }}>
+                            <i className="ion-shuffle"/>Shuffle
+                        </button>
+                    </div>
+                    <div className="form-element">
+                        <label for="Layout">Layout</label>
+                        <select id="Layout" onChange={(event) => {
+                            this.setState({layout: event.target.value});
+                            this.refs.menu.close();
+                        }}>
+                            <option value="CelticCrossLayout">Celtic Cross</option>
+                            <option value="ThreeCardLayout">Three Card</option>
+                            <option value="AllCardFacesLayout">All Card Faces</option>
+                        </select>
+                    </div>
+                </Menu>
             </div>
         );
     }

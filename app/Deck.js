@@ -1,7 +1,7 @@
 import _ from 'underscore';
 
 export default{
-    draw: function(amount){
+    draw: function(amount, disallowReverse){
         var items = this.get();
         function rand(ceil){
             return Math.floor(Math.random() * ceil);
@@ -17,7 +17,7 @@ export default{
             return myArray.slice(0, picks);
         }
         return fisherYates(amount).map((random) => {
-            return _.extend({}, items[random], { inverted: rand(2)?true:false });
+            return _.extend({}, items[random], { inverted: (disallowReverse ? false : (rand(2)?true:false)) });
         });
     },
     draw2: function(amount){

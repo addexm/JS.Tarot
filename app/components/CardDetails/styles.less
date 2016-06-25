@@ -62,14 +62,29 @@
         overflow: scroll;
         padding: @panelPadding;
         margin-left: @panelPadding;
-        b{
+        h1{
             margin-bottom: 5px;
+            font-size: 16px;
             color: @gold;
         }
+        b{
+            color: @lightpurple;
+        }
         p{
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             &.highlighted{
-                background: lighten(@purple, 10%);
+                &:before{
+                    content: "\f10b";
+                    font-family: "Ionicons";
+                    font-weight: bold;
+                    color: @gold;
+                    display: inline-block;
+                    margin-right: 5px;
+                    font-size: 20px;
+                    line-height: 13px;
+                    position: relative;
+                    top: 2px;
+                }
             }
         }
     }

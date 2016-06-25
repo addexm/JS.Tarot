@@ -1,0 +1,47 @@
+@import "../../variables";
+
+.pickCardQuestion {
+    .question{
+        margin-bottom: 15px;
+    }
+    .answers {
+        .answer {
+            height: 280px;
+            box-sizing: border-box;
+            width: 31%;
+            min-width: 280px * .57;
+            margin: 0 1%;
+            padding: 15px 0;
+            position: relative;
+            display: inline-block;
+            background: @gray;
+            &:after {
+                position: absolute;
+                font-size: 60px;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                font-family: "Ionicons";
+                z-index: 100;
+                text-shadow: 0 0 5px #000;
+            }
+            &.answer-scored {
+                &:after {
+                    content: "\f129";
+                    color: red;
+                }
+            }
+            &.answer-scored-correct {
+                &:after {
+                    content: "\f121";
+                    color: green;
+                }
+            }
+            .card {
+                position: static;
+                margin: 0 auto !important;
+                cursor: pointer;
+            }
+        }
+    }
+}

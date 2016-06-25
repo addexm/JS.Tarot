@@ -43,11 +43,16 @@ export default class CardDetails extends React.Component {
                     this.setState({ blown: !this.state.blown });
                 }}/>
                 <div className="cardDetails-content cardDetails-notes">
-                    <b>{this.props.card.name}{this.props.card.inverted?' (Reversed)':''}</b>
-                    {this.props.card.notes.map((item, index)=>{
-                        let cls = '';
-                        if (item.indexOf('Reversed') > -1 && this.props.card.inverted)cls = 'highlighted';
-                        return (<p className={cls} key={index}>{item}</p>)
+                    <h1>{this.props.card.name}{this.props.card.inverted?' (Reversed)':''}</h1>
+                    <b>Divinatory Meanings:</b>
+                    <p className={!this.props.card.inverted?'highlighted':''}>{this.props.card.divinatory}</p>
+                    <b>Reversed Meanings:</b>
+                    <p className={this.props.card.inverted?'highlighted':''}>{this.props.card.reversed}</p>
+                    <b>Additional Meanings:</b>
+                    <p>{this.props.card.additional || 'N/A'}</p>
+                    <b>Description</b>
+                    {this.props.card.desciption.map((item, index)=>{
+                        return (<p key={index}>{item}</p>)
                     })}
                 </div>
                 <div className="cardDetails-panel">

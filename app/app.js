@@ -8,8 +8,25 @@ import 'babel-polyfill';
 
 // TODO constrain eslint import/no-unresolved rule to this block
 // Load the manifest.json file and the .htaccess file
-import 'file?name=[name].[ext]!./manifest.json';  // eslint-disable-line import/no-unresolved
-import 'file?name=[name].[ext]!./.htaccess';      // eslint-disable-line import/no-unresolved
+import 'file?name=img/[name].[ext]!./manifest.json';  // eslint-disable-line import/no-unresolved
+import 'file?name=img/[name].[ext]!./.htaccess';      // eslint-disable-line import/no-unresolved
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-57x57.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-60x60.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-72x72.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-76x76.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-114x114.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-120x120.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-144x144.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-152x152.png';
+import 'file?name=img/[name].[ext]!./img/apple-touch-icon-180x180.png';
+import 'file?name=img/[name].[ext]!./img/favicon-32x32.png';
+import 'file?name=img/[name].[ext]!./img/android-chrome-192x192.png';
+import 'file?name=img/[name].[ext]!./img/favicon-96x96.png';
+import 'file?name=img/[name].[ext]!./img/favicon-16x16.png';
+import 'file?name=img/[name].[ext]!./img/safari-pinned-tab.svg';
+import 'file?name=img/[name].[ext]!./img/favicon.ico';
+import 'file?name=img/[name].[ext]!./img/mstile-144x144.png';
+import 'file?name=img/[name].[ext]!./img/browserconfig.xml';
 
 // Import all the third party stuff
 import React from 'react';

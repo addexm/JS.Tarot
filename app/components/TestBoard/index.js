@@ -35,12 +35,13 @@ export default class TestBoard extends React.Component {
     }
 
     nextQuestion(){
-        let newCards = Deck.draw(3, true);
+        let inversion = this.getRand(2) === 1;
+        let newCards = Deck.draw(3, inversion);
         this.setState({
             cards: newCards,
             answer: this.getRand(3),
             type: this.getRand(2),
-            property: this.getRand(2) === 0 ? 'divinatory' : 'reversed'
+            property: inversion ? 'reversed' : 'divinatory'
         });
     }
 

@@ -33,7 +33,7 @@ module.exports = (options) => ({
       loaders: ['style-loader', 'css-loader'],
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
-      loader: 'file-loader',
+      loader: 'file-loader?name=[path][name].[ext]&context=app',
     }, {
       test: /\.(jpg|png|gif)$/,
       loaders: [

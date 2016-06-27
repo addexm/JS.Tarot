@@ -2,12 +2,20 @@
 
 .board {
     color: #fff;
+    position: absolute;
     width: 100%;
     height: 100%;
-    margin: 0 auto;
-    position: absolute;
     left: 0;
     top: 0;
-    padding: 50px;
+    right: 0;
+    bottom: 0;
+    margin: auto auto;
     perspective: 1000px;
+    .layout{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 50px;
+        overflow: hidden;
+    }
 }

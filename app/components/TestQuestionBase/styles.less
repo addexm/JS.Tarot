@@ -1,12 +1,18 @@
 @import "../../variables";
 
 .testQuestion{
-    width: 50%;
+    width: 100%;
+    max-width: 924px;
     min-width: 320px;
-    height: 100%;
     margin: 0 auto;
+    height: 100%;
     font-size: 13px;
-    padding: 15px;
+    padding: 50px;
+    box-sizing: border-box;
+    > div{
+        padding: 50px;
+        background: @darkgray;
+    }
     b{
         color: @lightpurple;
         display: block;

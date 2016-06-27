@@ -6,9 +6,16 @@
     font-size: 35px;
     left: 10px;
     top: 10px;
-    background-image: url(img/mstile-144x144.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 40px 40px;
-    padding-left: 45px;
+    svg{
+        width: 35px;
+        height: 35px;
+        position: relative;
+        top: 2px;
+        path{
+            fill: @lightpurple !important;
+            &:nth-child(2){
+                fill: @gold !important;
+            }
+        }
+    }
 }

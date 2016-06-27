@@ -17,7 +17,7 @@ export default class CelticCrossLayout extends LayoutBase {
         let cards = this.state.cards;
         let superContent = super.render();
         return (
-            <div className={classNames(styles.celticCrossLayout)}>
+            <div className={classNames('layout', styles.celticCrossLayout)}>
                 {superContent}
                 <div className="col">
                     <Card key="p3" card={cards[3]} position={4} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>

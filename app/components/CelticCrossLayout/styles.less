@@ -1,16 +1,15 @@
 @import "../../variables";
 
 .celticCrossLayout {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
     > div.col{
         position: relative;
         display: inline-block;
         height: 100%;
         width: 25%;
+        overflow: hidden;
     }
     .card{
+        max-width: 100%;
         right: 0;
         left: 0;
         margin: auto auto;

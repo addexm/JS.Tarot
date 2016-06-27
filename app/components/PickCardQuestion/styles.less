@@ -1,20 +1,27 @@
 @import "../../variables";
 
 .pickCardQuestion {
+    text-align: center;
     .question{
         margin-bottom: 15px;
+        text-align: center;
     }
     .answers {
+        text-align: center;
         .answer {
             height: 280px;
             box-sizing: border-box;
-            width: 31%;
             min-width: 280px * .57;
             margin: 0 1%;
-            padding: 15px 0;
+            padding: 20px;
             position: relative;
             display: inline-block;
             background: @gray;
+            border-radius: 10px;
+            cursor: pointer;
+            &:hover{
+                background: lighten(@gray, 10%);
+            }
             &:after {
                 position: absolute;
                 font-size: 60px;

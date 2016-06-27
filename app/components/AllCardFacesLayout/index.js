@@ -18,7 +18,7 @@ export default class AllCardFacesLayout extends LayoutBase {
         let cards = this.state.cards;
         let superContent = super.render();
         return (
-            <div className={classNames(styles.allCardFacesLayout)}>
+            <div className={classNames('layout', styles.allCardFacesLayout)}>
                 {superContent}
                 {_.sortBy(cards, (item) => { return item.index; } ).map((item, index) => {
                     var newCard = _.extend({}, item, { inverted: false });

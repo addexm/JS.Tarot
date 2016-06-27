@@ -18,7 +18,8 @@ export default class TestBoard extends React.Component {
             cards: null,
             answer: 0,
             type: 0,
-            property: null
+            property: null,
+            mode: 'Random'
         };
     }
 
@@ -64,7 +65,21 @@ export default class TestBoard extends React.Component {
 
     render() {
         let qComp = null;
-        if (this.state.type === 0) {
+        let qType = null;
+        if (this.state.mode === 'Random'){
+            if (this.state.type === 0){
+                qType = 'PickCardQuestion';
+            }else{
+                qType = 'PickDescQuestion';
+            }
+        }
+        else if (this.state.mode === 'PickCard'){
+            qType = 'PickCardQuestion';
+        }else{
+            qType = 'PickDescQuestion';
+        }
+
+        if (qType === 'PickCardQuestion') {
             qComp = (<PickCardQuestion cards={this.state.cards} answer={this.state.answer} property={this.state.property} score={(isCorrect) => {
                         this.score(isCorrect);
                     }}/>);
@@ -76,6 +91,19 @@ export default class TestBoard extends React.Component {
         return (
             <div className={styles.testBoard}>
                 <Menu ref="menu">
+                    <div className="form-element">
+                        <label for="TestMode">Test Mode</label>
+                        <select id="TestMode" onChange={(event) => {
+                            this.setState({mode: event.target.value});
+                            this.nextQuestion();
+                            this.refs.menu.close();
+                        }}>
+                            <option value="Random">Random</option>
+                            <option value="PickCard">Pick a Card</option>
+                            <option value="PickDesc">Pick a Meaning</option>
+                        </select>
+                    </div>
+
                     <div className="form-element">
                         <button onClick={() => {
                             this.nextQuestion();

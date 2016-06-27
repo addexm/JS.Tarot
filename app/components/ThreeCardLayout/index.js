@@ -21,7 +21,7 @@ export default class ThreeCardLayout extends LayoutBase {
         let cards = this.state.cards;
         let superContent = super.render();
         return (
-            <div className={classNames(styles.threeCardLayout)}>
+            <div className={classNames('layout', styles.threeCardLayout)}>
                 {superContent}
                 <div className="col">
                     <Card key="p1" card={cards[0]} position={1} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>

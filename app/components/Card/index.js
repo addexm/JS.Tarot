@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './styles.less';
+import imagesSets from './imagesSets.less';
 
 export default class Card extends React.Component {
     static propTypes = {
         card: React.PropTypes.object,
         position: React.PropTypes.number,
         onClick: React.PropTypes.func,
-        flipped: React.PropTypes.bool
+        flipped: React.PropTypes.bool,
+        imageSet: React.PropTypes.string
     };
 
     constructor () {
@@ -33,8 +35,10 @@ export default class Card extends React.Component {
     }
 
     render() {
+        var imageSet = 'imageset-' + (this.props.imageSet || 'Marseilles');
         return (
             <div className={classNames(styles.card,
+                imageSet,
                 'card-' + this.props.card.index,
                 {'card-inverted': this.props.card.inverted },
                 {'card-flipped': this.state.flipped },

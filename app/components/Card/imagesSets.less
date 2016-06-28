@@ -1,0 +1,37 @@
+.card{
+    &.imageset-RW {
+        .generate-cards();
+
+        .generate-cards(@i:0) when (@i =< 77) {
+            &.card-@{i} {
+                .card-front > div {
+                    background-image: url('img/RW/@{i}.png'); //now
+                }
+            }
+            .generate-cards(@i + 1);
+        }
+    }
+
+    &.imageset-Marseilles {
+        .generate-cards();
+
+        .generate-cards(@i:0) when (@i =< 77) {
+            &.card-@{i} {
+                .card-front > div {
+                    background-image: url('img/Marseilles/@{i}.jpg'); //now again
+                }
+            }
+            .generate-cards(@i + 1);
+        }
+    }
+
+    .generate-cards(@i:0) when (@i =< 77) {
+        &.card-pos@{i} {
+            z-index: @i;
+            &.card-flipped {
+                z-index: 77 - @i;
+            }
+        }
+        .generate-cards(@i + 1);
+    }
+}

@@ -9,7 +9,7 @@
     transform-style: preserve-3d;
     cursor: pointer;
 
-    .card-front{
+    .card-front {
         backface-visibility: hidden;
         position: absolute;
         top: 0;
@@ -23,18 +23,18 @@
         background-color: @white;
         border: 1px solid gray;
         border-radius: 2%;
-        > div{
+        > div {
             width: 100%;
             height: 100%;
             background-size: 102% 102%;
             background-repeat: no-repeat;
             background-position: center center;
             clip-path: inset(6% 2% 6% 2%);
-            .card-inverted&{
+            .card-inverted& {
                 transform: rotate(180deg);
             }
         }
-        span{
+        span {
             display: block;
             //background: rgba(0, 0, 0, .35);
             color: lighten(@gray, 30%);
@@ -46,7 +46,7 @@
         }
     }
 
-    .card-back{
+    .card-back {
         backface-visibility: hidden;
         position: absolute;
         top: 0;
@@ -59,7 +59,7 @@
         transform: rotateY(180deg);
         background-image: url('img/RW/back.gif');
         border-radius: 5px;
-        > h1{
+        > h1 {
             display: block;
             color: fade(@gold, 80%);
             text-shadow: -1px -1px 6px rgba(0, 0, 0, .85);
@@ -75,45 +75,28 @@
             text-align: center;
             margin: auto auto;
         }
-        .card-inverted&{
-            > h1{
+        .card-inverted& {
+            > h1 {
                 transform: rotateY(0deg);
             }
         }
     }
 
-    &.card-flipped{
+    &.card-flipped {
         transform: rotateY(180deg);
-        .card-front{
+        .card-front {
             transform: rotateY(0deg);
         }
-        .card-back{
+        .card-back {
             transform: rotateY(180deg);
         }
     }
 
-    &:hover:not(.card-flipped){
+    &:hover:not(.card-flipped) {
         z-index: 100 !important;
-        span{
+        span {
             display: block;
         }
     }
 
-    .generate-cards();
-
-    .generate-cards(@i:0) when (@i =< 77) {
-        &.card-@{i}{
-            .card-front > div {
-                background-image: url('img/RW/@{i}.png'); //now
-            }
-
-        }
-        &.card-pos@{i}{
-            z-index: @i;
-            &.card-flipped{
-                z-index: 77 - @i;
-            }
-        }
-        .generate-cards(@i + 1);
-    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './styles.less';
 import { Link, IndexLink, withRouter } from 'react-router'
+import FacebookProvider, { Like } from 'react-facebook';
 
 export default class Menu extends React.Component {
     static propTypes = {
@@ -34,6 +35,11 @@ export default class Menu extends React.Component {
                     </div>
                     <div className="menu-functions">
                         {this.props.children}
+                    </div>
+                    <div className="menu-social">
+                        <FacebookProvider appID="1127613583965709">
+                            <Like href="http://jstarot.com" colorScheme="dark" showFaces share />
+                        </FacebookProvider>
                     </div>
                 </div>
             </div>

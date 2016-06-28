@@ -62,7 +62,8 @@
     }
 
     .menu-functions {
-        margin-top: @menuPadding;
+        margin: @menuPadding 0 0 0;
+        border-bottom: 1px solid @darkgray;
         .form-element {
             width: @menuWidth - (2*@menuPadding);
             font-size: 13px;
@@ -105,5 +106,9 @@
                 }
             }
         }
+    }
+
+    .menu-social{
+        margin-top: @menuPadding
     }
 }

@@ -54,7 +54,7 @@ export default class TestBoard extends React.Component {
         localStorage.setItem('score', JSON.stringify(newState));
         window.setTimeout(() => {
             this.nextQuestion();
-        }, 1500);
+        }, 2000);
     }
 
     resetScore(){

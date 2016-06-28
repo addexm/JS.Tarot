@@ -38,7 +38,7 @@ export default class Menu extends React.Component {
                     </div>
                     <div className="menu-social">
                         <FacebookProvider appID="1127613583965709">
-                            <Like href="http://jstarot.com" colorScheme="dark" showFaces share />
+                            <Like href="http://jstarot.com" colorScheme="dark" showFaces={true} share width="280px"/>
                         </FacebookProvider>
                     </div>
                 </div>

@@ -20,24 +20,29 @@
         background-repeat: no-repeat;
         background-position: center center;
         transform: rotateY(0deg);
+        background-color: @white;
+        border: 1px solid gray;
+        border-radius: 2%;
         > div{
             width: 100%;
             height: 100%;
-            background-size: 100% 100%;
+            background-size: 102% 102%;
             background-repeat: no-repeat;
             background-position: center center;
+            clip-path: inset(6% 2% 6% 2%);
             .card-inverted&{
                 transform: rotate(180deg);
             }
         }
         span{
-            display: none;
-            background: rgba(0, 0, 0, .35);
+            display: block;
+            //background: rgba(0, 0, 0, .35);
+            color: lighten(@gray, 30%);
             text-align: center;
             position: absolute;
             width: 100%;
-            bottom: 10%;
-            font-size: 12px;
+            bottom: 0;
+            font-size: 10px;
         }
     }
 
@@ -53,6 +58,7 @@
         background-position: center center;
         transform: rotateY(180deg);
         background-image: url('img/RW/back.gif');
+        border-radius: 5px;
         > h1{
             display: block;
             color: fade(@gold, 80%);
@@ -98,7 +104,7 @@
     .generate-cards(@i:0) when (@i =< 77) {
         &.card-@{i}{
             .card-front > div {
-                background-image: url('img/RW/@{i}.gif');
+                background-image: url('img/RW/@{i}.png'); //now
             }
 
         }

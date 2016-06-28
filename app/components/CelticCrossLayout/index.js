@@ -10,7 +10,19 @@ export default class CelticCrossLayout extends LayoutBase {
     }
 
     getPositionData(num){
-        return { index: num, desc: 'No position data available.' };
+        switch(num){
+            case 1: return { index: num, desc: 'Present. Where the querent currently is.' };
+            case 2: return { index: num, desc: 'Challenges. The problem facing the querent.' };
+            case 3: return { index: num, desc: 'Subconscious influences of the querent.' };
+            case 4: return { index: num, desc: 'Past. Events leading up tot he present' };
+            case 5: return { index: num, desc: 'Goal or aspirations of the querent.' };
+            case 6: return { index: num, desc: 'Near future of the querent.' };
+            case 7: return { index: num, desc: 'Advice for the querent.' };
+            case 8: return { index: num, desc: 'External influences, beyond the control of the querent.' };
+            case 9: return { index: num, desc: 'Hopes and/or fears.' };
+            case 10: return { index: num, desc: 'Outcome, resolution. ' };
+            default: return { index: num, desc: 'No position data available.' };
+        }
     }
 
     render() {

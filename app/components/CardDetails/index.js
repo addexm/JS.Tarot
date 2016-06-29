@@ -8,7 +8,8 @@ export default class CardDetails extends React.Component {
     static propTypes = {
         card: React.PropTypes.object,
         position: React.PropTypes.object,
-        open: React.PropTypes.bool
+        open: React.PropTypes.bool,
+        imageset: React.PropTypes.string
     };
 
     constructor () {
@@ -38,8 +39,8 @@ export default class CardDetails extends React.Component {
         if (!this.props.card)return null;
         var blownCard = _.extend({}, this.props.card, { inverted: false });
         return (
-            <div className={classNames('cardDetails', {'cardDetails-open': this.state.open })}>
-                <Card ref="card" card={this.props.card} position={this.props.positions} flipped={false} onClick={() => {
+            <div className={classNames('cardDetails', {'cardDetails-open': this.state.open })} onClick={(event) => { event.stopPropagation(); }}>
+                <Card ref="card" card={this.props.card} position={this.props.positions} flipped={false} imageset={this.props.imageset} onClick={() => {
                     this.setState({ blown: !this.state.blown });
                 }}/>
                 <div className="cardDetails-content cardDetails-notes">
@@ -78,7 +79,9 @@ export default class CardDetails extends React.Component {
                         this.setState({ blown: !this.state.blown });
                     }}
                 >
-                    <Card ref="card" card={blownCard} position={null} flipped={false}/>
+                    <Card ref="card" card={blownCard} position={null} flipped={false} imageset={this.props.imageset} onClick={() => {
+                        this.setState({ blown: !this.state.blown });
+                    }} />
                 </div>
             </div>
         );

@@ -21,16 +21,16 @@ export default class ThreeCardLayout extends LayoutBase {
         let cards = this.state.cards;
         let superContent = super.render();
         return (
-            <div className={classNames('layout', styles.threeCardLayout)}>
+            <div className={classNames('layout', styles.threeCardLayout)} onClick={this.hideDetails.bind(this)}>
                 {superContent}
-                <div className="col">
-                    <Card key="p1" card={cards[0]} position={1} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>
+                <div className="col" onClick={this.hideDetails.bind(this, event)}>
+                    <Card key="p1" card={cards[0]} position={1} extraclasses="center-vertical" onClick={this.showDetails.bind(this)} imageset={this.props.imageset}/>
                 </div>
-                <div className="col">
-                    <Card key="p2" card={cards[1]} position={2} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>
+                <div className="col" onClick={this.hideDetails.bind(this, event)}>
+                    <Card key="p2" card={cards[1]} position={2} extraclasses="center-vertical" onClick={this.showDetails.bind(this)} imageset={this.props.imageset}/>
                 </div>
-                <div className="col">
-                    <Card key="p3" card={cards[2]} position={3} extraclasses="center-vertical" onClick={this.showDetails.bind(this)}/>
+                <div className="col" onClick={this.hideDetails.bind(this, event)}>
+                    <Card key="p3" card={cards[2]} position={3} extraclasses="center-vertical" onClick={this.showDetails.bind(this)} imageset={this.props.imageset}/>
                 </div>
             </div>
         );

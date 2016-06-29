@@ -4,50 +4,55 @@ import styles from './styles.less';
 import CelticCrossLayout from 'components/CelticCrossLayout';
 import ThreeCardLayout from 'components/ThreeCardLayout';
 import AllCardFacesLayout from 'components/AllCardFacesLayout';
+import BoardBase from 'components/BoardBase';
 import Menu from 'components/Menu';
 
-export default class Board extends React.Component {
+export default class Board extends BoardBase {
     constructor () {
         super();
-        this.state = {
+        Object.assign(this.state, {
             layout: 'CelticCrossLayout',
             shuffle: Date.now()
-        };
+        });
     }
 
     render() {
-        let layoutComponent = null;
+        let menuItems = (
+            <div>
+                <div className="form-element">
+                    <button onClick={() => {
+                        this.setState({shuffle: Date.now()});
+                        this.refs.menu.close();
+                    }}>
+                    <i className="ion-shuffle"/>Shuffle
+                    </button>
+                </div>
+                <div className="form-element">
+                    <label for="Layout">Layout</label>
+                    <select id="Layout" onChange={(event) => {
+                        this.setState({layout: event.target.value});
+                        this.refs.menu.close();
+                    }}>
+                        <option value="CelticCrossLayout">Celtic Cross</option>
+                        <option value="ThreeCardLayout">Three Card</option>
+                        <option value="AllCardFacesLayout">All Card Faces</option>
+                    </select>
+                </div>
+            </div>
+        );
+
+        let LayoutComponent = null;
         if (this.state.layout === 'ThreeCardLayout'){
-            layoutComponent = <ThreeCardLayout shuffle={this.state.shuffle} />
+            LayoutComponent = ThreeCardLayout;
         }else if (this.state.layout === 'AllCardFacesLayout') {
-            layoutComponent = <AllCardFacesLayout shuffle={this.state.shuffle} />
+            LayoutComponent = AllCardFacesLayout;
         }else{
-            layoutComponent = <CelticCrossLayout shuffle={this.state.shuffle} />
+            LayoutComponent = CelticCrossLayout;
         }
         return (
             <div className={styles.board}>
-                {layoutComponent}
-                <Menu ref="menu">
-                    <div className="form-element">
-                        <button onClick={() => {
-                            this.setState({shuffle: Date.now()});
-                            this.refs.menu.close();
-                        }}>
-                            <i className="ion-shuffle"/>Shuffle
-                        </button>
-                    </div>
-                    <div className="form-element">
-                        <label for="Layout">Layout</label>
-                        <select id="Layout" onChange={(event) => {
-                            this.setState({layout: event.target.value});
-                            this.refs.menu.close();
-                        }}>
-                            <option value="CelticCrossLayout">Celtic Cross</option>
-                            <option value="ThreeCardLayout">Three Card</option>
-                            <option value="AllCardFacesLayout">All Card Faces</option>
-                        </select>
-                    </div>
-                </Menu>
+                <LayoutComponent shuffle={this.state.shuffle} imageset={this.state.imageset} allowreversed={this.state.allowreversed} />
+                {super.renderMenu(menuItems)}
             </div>
         );
     }

@@ -18,12 +18,12 @@ export default class AllCardFacesLayout extends LayoutBase {
         let cards = this.state.cards;
         let superContent = super.render();
         return (
-            <div className={classNames('layout', styles.allCardFacesLayout)}>
+            <div className={classNames('layout', styles.allCardFacesLayout)} onClick={this.hideDetails.bind(this, event)}>
                 {superContent}
                 {_.sortBy(cards, (item) => { return item.index; } ).map((item, index) => {
                     var newCard = _.extend({}, item, { inverted: false });
                     return (
-                        <Card key={'P' + index} card={newCard} position={index} onClick={this.showDetails.bind(this)} flipped={false}/>
+                        <Card key={'P' + index} card={newCard} position={index} onClick={this.showDetails.bind(this)} flipped={false} imageset={this.props.imageset}/>
                     );
                 })}
             </div>

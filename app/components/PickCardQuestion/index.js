@@ -19,7 +19,7 @@ export default class PickCardQuestion extends TestQuestionBase {
                         {cards.map((card, index) => {
                             return (
                                 <div className={classNames('answer', { 'answer-scored': this.state.scored }, { 'answer-scored-correct': this.state.scored && index === this.props.answer })} key={index}>
-                                    <Card card={card} position={index} flipped={false} onClick={(position) => {
+                                    <Card card={card} position={index} flipped={false} imageset={this.props.imageset} onClick={(position) => {
                                         this.setScore(position);
                                     }} />
                                 </div>

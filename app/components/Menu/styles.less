@@ -47,21 +47,24 @@
         border-bottom: 1px solid @darkgray;
         a{
             display: block;
-            color:  darken(@gold, 20%);
+            color:  @gold;
             margin-bottom: @menuPadding;
             &:visited, &:active{
-                color: darken(@gold, 20%);
-            }
-            &.active{
                 color: @gold;
             }
             &:hover{
-                color: @gold;
+                color: darken(@gold, 10%);
+            }
+            &.active{
+                color: lighten(@lightpurple, 10%);
+                &:hover{
+                    color: lighten(@lightpurple, 10%);
+                }
             }
         }
     }
 
-    .menu-functions {
+    .menu-functions, .menu-common {
         margin: @menuPadding 0 0 0;
         border-bottom: 1px solid @darkgray;
         .form-element {
@@ -103,6 +106,15 @@
                     position: relative;
                     top: 2px;
                     margin-right: 5px;
+                }
+            }
+            &.inline{
+                > label{
+                    display: inline-block;
+                }
+                input, button, select{
+                    width: auto;
+                    margin-right: 10px;
                 }
             }
         }

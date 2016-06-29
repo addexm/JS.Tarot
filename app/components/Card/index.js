@@ -35,7 +35,7 @@ export default class Card extends React.Component {
     }
 
     render() {
-        var imageSet = 'imageset-' + (this.props.imageSet || 'Marseilles');
+        var imageSet = 'imageset-' + (this.props.imageset || 'marseilles').toLowerCase();
         return (
             <div className={classNames(styles.card,
                 imageSet,
@@ -45,7 +45,8 @@ export default class Card extends React.Component {
                 'card-pos' + this.props.position,
                 this.props.extraclasses)}
             style={this.props.style}
-            onClick={() => {
+            onClick={(event) => {
+                event.stopPropagation();
                 if (this.state.flipped){
                     this.setState({flipped: false});
                 }else{

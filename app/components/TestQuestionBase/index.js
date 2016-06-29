@@ -6,7 +6,8 @@ export default class TestQuestionBase extends React.Component {
         score: React.PropTypes.func,
         cards: React.PropTypes.array,
         answer: React.PropTypes.number,
-        property: React.PropTypes.string
+        property: React.PropTypes.string,
+        imageset: React.PropTypes.string
     };
 
     constructor () {

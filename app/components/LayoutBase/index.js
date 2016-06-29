@@ -5,7 +5,9 @@ import CardDetails from 'components/CardDetails';
 
 export default class LayoutBase extends React.Component {
     static propTypes = {
-        shuffle: React.PropTypes.number
+        shuffle: React.PropTypes.number,
+        imageset: React.PropTypes.string,
+        allowreversed: React.PropTypes.bool
     };
 
     constructor () {
@@ -22,24 +24,31 @@ export default class LayoutBase extends React.Component {
         this.setState({ position: this.getPositionData(position), card: card, showingDetails: true });
     }
 
+    hideDetails(event){
+        if (event)event.stopPropagation();
+        this.setState({ showingDetails: false });
+    }
+
     getPositionData(num){
         return { index: num, desc: 'No position data available.' };
     }
 
-    draw(num){
-        this.setState({ cards: Deck.draw(num) });
+    draw(num, allowreversed){
+        var ar;
+        if (allowreversed === false)ar = false;
+        this.setState({ cards: Deck.draw(num, ar) });
     }
 
     componentWillReceiveProps(nextProps){
-        if (nextProps.shuffle !== this.props.shuffle){
-            this.draw(this.state.cards.length);
+        if (nextProps.shuffle !== this.props.shuffle || nextProps.allowreversed !== this.props.allowreversed){
+            this.draw(this.state.cards.length, nextProps.allowreversed);
             this.setState({ card: null, position: null, showingDetails: false });
         }
     }
 
     render(){
         return(
-            <CardDetails position={this.state.position} card={this.state.card} open={this.state.showingDetails} />
+            <CardDetails position={this.state.position} card={this.state.card} open={this.state.showingDetails} imageset={this.props.imageset} />
         );
     }
 }

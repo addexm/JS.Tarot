@@ -14,7 +14,7 @@ export default class PickDescQuestion extends TestQuestionBase {
                     <b>Pick the <span>{this.props.property}</span> meaning that matches the card:</b>
                     <div className="row">
                         <div className="question">
-                            <Card card={cards[this.props.answer]} position={0} flipped={false} />
+                            <Card card={cards[this.props.answer]} position={0} flipped={false} imageset={this.props.imageset} />
                         </div>
                         <div className="answers">
                             {cards.map((card, index) => {

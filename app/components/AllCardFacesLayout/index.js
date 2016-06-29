@@ -7,7 +7,7 @@ import _ from 'underscore';
 
 export default class AllCardFacesLayout extends LayoutBase {
     componentWillMount() {
-        super.draw(78);
+        super.draw(78, false);
     }
 
     getPositionData(num) {

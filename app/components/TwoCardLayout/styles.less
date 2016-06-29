@@ -1,0 +1,19 @@
+@import "../../variables";
+
+.twoCardLayout {
+    > div.col{
+        position: relative;
+        display: inline-block;
+        height: 100%;
+        width: 50%;
+    }
+    .card{
+        right: 0;
+        left: 0;
+        margin: auto auto;
+        &.center-vertical{
+            top: 0;
+            bottom: 0;
+        }
+    }
+}

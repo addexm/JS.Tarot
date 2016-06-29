@@ -6,7 +6,7 @@ import Card from 'components/Card';
 
 export default class CelticCrossLayout extends LayoutBase {
     componentWillMount(){
-        super.draw(10);
+        super.draw(10, this.props.allowreversed);
     }
 
     getPositionData(num){

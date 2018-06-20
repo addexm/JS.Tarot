@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import styles from './styles.less';
 import { Link, IndexLink, withRouter } from 'react-router'
 import FacebookProvider, { Like } from 'react-facebook';
+import DecksList from '../../DecksList';
+import _ from 'underscore';
 
 export default class Menu extends React.Component {
     static propTypes = {
@@ -26,7 +28,7 @@ export default class Menu extends React.Component {
         }, 0);
     }
 
-    render() {
+    render() {        
         return (
             <div className={classNames(styles.menu, {'menu-open': this.state.open})}>
                 <i className="ion-navicon-round" onClick={() => {
@@ -47,8 +49,11 @@ export default class Menu extends React.Component {
                                 this.props.changeImageSet(event.target.value);
                                 this.close();
                             }}>
-                                <option value="RW">Rider Waite Smith</option>
-                                <option value="Marseilles">Marseilles</option>
+                                {_.map(_.keys(DecksList.decks), function(key, index){
+                                    return(
+                                        <option value={key} key={key}>{DecksList.decks[key]}</option>
+                                    )
+                                })}
                             </select>
                         </div>
                         <div className="form-element inline">

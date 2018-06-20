@@ -2,12 +2,15 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './styles.less';
 import Menu from 'components/Menu';
+import DecksList from '../../DecksList';
 
 export default class BoardBase extends React.Component {
     constructor () {
         super();
+        let defaultDeck = DecksList.defaultDeck;
+        console.log(defaultDeck);
         this.state = {
-            imageset: 'RW',
+            imageset: defaultDeck,
             allowreversed: true
         };
     }
